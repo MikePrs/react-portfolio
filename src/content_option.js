@@ -18,89 +18,94 @@ const dataabout = {
     title: "abit about my self",
     aboutme: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis dolor id ligula semper elementum feugiat pretium nulla. Nunc non commodo dolor. Nunc mollis dignissim facilisis. Morbi ut magna ultricies.",
 };
+
 const worktimeline = [{
-        jobtitle: "Designer of week",
-        where: "YAdfi",
-        date: "2020",
-    },
-    {
-        jobtitle: "Designer of week",
-        where: "Jamalya",
-        date: "2019",
-    },
-    {
-        jobtitle: "Designer of week",
-        where: "ALquds",
-        date: "2019",
-    },
+    jobtitle: "Student",
+    where: "Hellenic Mediterranean University",
+    date: "2017 - 2023",
+},
+{
+    jobtitle: "Salesforce Developer",
+    where: "Deloitte",
+    date: "2022 - Now",
+},
 ];
 
 const skills = [{
-        name: "Python",
-        value: 90,
-    },
-    {
-        name: "Djano",
-        value: 85,
-    },
-    {
-        name: "Javascript",
-        value: 80,
-    },
-    {
-        name: "React",
-        value: 60,
-    },
-    {
-        name: "Jquery",
-        value: 85,
-    },
+    name: "Javascript",
+    value: 70,
+},
+{
+    name: "React Native",
+    value: 80,
+},
+{
+    name: "Java",
+    value: 60,
+},
+{
+    name: "React",
+    value: 50,
+},
+{
+    name: "Salesforce",
+    value: 60,
+},
+{
+    name: "Salesforce / LWC",
+    value: 70,
+},
+{
+    name: "Swift",
+    value: 30,
+},
 ];
 
-const services = [{
-        title: "UI & UX Design",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at nisl euismod urna bibendum sollicitudin.",
-    },
-    {
-        title: "Mobile Apps",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at nisl euismod urna bibendum sollicitudin.",
-    },
-    {
-        title: "Wordpress Design",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at nisl euismod urna bibendum sollicitudin.",
-    },
-];
+
+// const services = [{
+//         title: "UI & UX Design",
+//         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at nisl euismod urna bibendum sollicitudin.",
+//     },
+//     {
+//         title: "Mobile Apps",
+//         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at nisl euismod urna bibendum sollicitudin.",
+//     },
+//     {
+//         title: "Wordpress Design",
+//         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at nisl euismod urna bibendum sollicitudin.",
+//     },
+// ];
 
 const dataportfolio = [{
-        img: "https://picsum.photos/400/?grayscale",
-        desctiption: "The wisdom of life consists in the elimination of non-essentials.",
-        link: "#",
-    },
-    {
-        img: "https://picsum.photos/400/?grayscale",
-        desctiption: "The wisdom of life consists in the elimination of non-essentials.",
-        link: "#",
-    },
-    {
-        img: "https://picsum.photos/400/300/?grayscale",
-        desctiption: "The wisdom of life consists in the elimination of non-essentials.",
-        link: "#",
-    },
-    {
-        img: "https://picsum.photos/400/300/?grayscale",
-        desctiption: "The wisdom of life consists in the elimination of non-essentials.",
-        link: "#",
-    },
-    {
-        img: "https://picsum.photos/400/550/?grayscale",
-        desctiption: "The wisdom of life consists in the elimination of non-essentials.",
-        link: "#",
-    },
-    {
-        img: "https://picsum.photos/400/700/?grayscale",
-        desctiption: "The wisdom of life consists in the elimination of non-essentials.",
-        link: "#",
-    },
+    img: "https://firebasestorage.googleapis.com/v0/b/portofolio-a3382.appspot.com/o/score%2Fscore.png?alt=media&token=aaee47fd-01e7-432a-98e0-cdd3808e8280",
+    desctiption: "The wisdom of life consists in the elimination of non-essentials.",
+    link: "#",
+},
+{
+    img: "https://picsum.photos/400/?grayscale",
+    desctiption: "The wisdom of life consists in the elimination of non-essentials.",
+    link: "#",
+},
+{
+    img: "https://picsum.photos/400/300/?grayscale",
+    desctiption: "The wisdom of life consists in the elimination of non-essentials.",
+    link: "#",
+},
+{
+    img: "https://picsum.photos/400/300/?grayscale",
+    desctiption: "The wisdom of life consists in the elimination of non-essentials.",
+    link: "#",
+},
+{
+    img: "https://picsum.photos/400/550/?grayscale",
+    desctiption: "The wisdom of life consists in the elimination of non-essentials.",
+    link: "#",
+},
+{
+    img: "https://picsum.photos/400/700/?grayscale",
+    desctiption: "The wisdom of life consists in the elimination of non-essentials.",
+    link: "#",
+},
 ];
 
 const contactConfig = {
@@ -124,7 +129,7 @@ export {
     dataportfolio,
     worktimeline,
     skills,
-    services,
+    // services,
     introdata,
     contactConfig,
     socialprofils,

@@ -22,7 +22,7 @@ const AnimatedRoutes = withRouter(({ location }) => (
       <Routes location={location}>
         <Route exact path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Portfolio projects={data} />} />
+        <Route path="/portfolio" element={<Portfolio {...data} />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="*" element={<Home />} />
       </Routes>
@@ -35,7 +35,7 @@ function AppRoutes(projects) {
   data = projects
   return (
     <div className="s_c">
-      <AnimatedRoutes projects={projects} />
+      <AnimatedRoutes />
       <Socialicons />
     </div>
   );

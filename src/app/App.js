@@ -1,9 +1,6 @@
 import React, { useEffect,useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  BrowserRouter as Router,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import withRouter from "../hooks/withRouter";
 import AppRoutes from "./routes";
 import Headermain from "../header";
@@ -35,13 +32,12 @@ function _ScrollToTop(props) {
 const ScrollToTop = withRouter(_ScrollToTop);
 
 export default function App() {
-  const [data, setData] = useState([]);
+  const [projects, setProjects] = useState([]);
   useEffect(() => {
     const dbRef = ref(getDatabase());
     get(child(dbRef, `projects/`)).then((snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
-        setData(snapshot.val())
+        setProjects(snapshot.val())
       } else {
         console.log("No data available");
       }
@@ -54,7 +50,7 @@ export default function App() {
     <Router basename={process.env.PUBLIC_URL}>
       <ScrollToTop>
         <Headermain />
-        <AppRoutes projects={data} />
+        <AppRoutes projects={projects} />
       </ScrollToTop>
     </Router>
   );

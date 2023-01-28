@@ -1,16 +1,27 @@
 import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { Container, Row, Col } from "react-bootstrap";
-import {
-  dataabout,
-  meta,
-  worktimeline,
-  skills,
-  services,
-} from "../../content_option";
+import { Container, Row, Col, Button  } from "react-bootstrap";
+import { dataabout, meta, worktimeline, skills } from "../../content_option";
+import { Link } from "react-router-dom";
 
 export const About = () => {
+
+
+  const onButtonClick = () => {
+    fetch('myCv.pdf').then(response => {
+      response.blob().then(blob => {
+        const fileURL = window.URL.createObjectURL(blob);
+        let alink = document.createElement('a');
+        alink.href = fileURL;
+        alink.download = 'myCv.pdf';
+        alink.click();
+      })
+    })
+  }
+
+
+
   return (
     <HelmetProvider>
       <Container className="About-header">
@@ -35,7 +46,10 @@ export const About = () => {
             </div>
           </Col>
         </Row>
-        <Row className=" sec_sp">
+        <div class="col-md-12 text-center">
+          <Button onClick={onButtonClick} variant="outline-secondary">Download my CV</Button>
+        </div>
+          <Row className=" sec_sp">
           <Col lg="5">
             <h3 className="color_sec py-4">Work Timline</h3>
           </Col>
@@ -79,7 +93,7 @@ export const About = () => {
             })}
           </Col>
         </Row>
-        <Row className="sec_sp">
+        {/* <Row className="sec_sp">
           <Col lang="5">
             <h3 className="color_sec py-4">services</h3>
           </Col>
@@ -93,7 +107,7 @@ export const About = () => {
               );
             })}
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </HelmetProvider>
   );
