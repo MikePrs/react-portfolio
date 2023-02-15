@@ -22,12 +22,13 @@ const dataabout = {
 const worktimeline = [{
     jobtitle: "Student",
     where: "Hellenic Mediterranean University",
-    date: "2017 - 2023",
+    date: "2017 - 2022",
+    link:"https://hmu.gr/en/home/",
 },
 {
     jobtitle: "Salesforce Developer",
     where: "Deloitte",
-    date: "2022 - Now",
+    date: "2021 - Now",
 },
 ];
 

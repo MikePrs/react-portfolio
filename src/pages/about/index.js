@@ -46,7 +46,7 @@ export const About = () => {
             </div>
           </Col>
         </Row>
-        <div class="col-md-12 text-center">
+        <div className="col-md-12 text-center">
           <Button onClick={onButtonClick} variant="outline-secondary">Download my CV</Button>
         </div>
           <Row className=" sec_sp">
@@ -60,7 +60,11 @@ export const About = () => {
                   return (
                     <tr key={i}>
                       <th scope="row">{data.jobtitle}</th>
-                      <td>{data.where}</td>
+                      {data.link ?
+                        <td><a href={data.link} target="_blank">{data.where}</a></td>
+                        :
+                        <td>{data.where}</td>
+                      }
                       <td>{data.date}</td>
                     </tr>
                   );
