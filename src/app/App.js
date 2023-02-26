@@ -6,11 +6,12 @@ import AppRoutes from "./routes";
 import Headermain from "../header";
 import "./App.css";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDAMCLIrGEwAKoGUTIQNJmp4RYuxc-dwLk",
   authDomain: "portofolio-a3382.firebaseapp.com",
+  databaseURL: "https://portofolio-a3382-default-rtdb.firebaseio.com",
   projectId: "portofolio-a3382",
   storageBucket: "portofolio-a3382.appspot.com",
   messagingSenderId: "77016362476",
@@ -32,25 +33,11 @@ function _ScrollToTop(props) {
 const ScrollToTop = withRouter(_ScrollToTop);
 
 export default function App() {
-  const [projects, setProjects] = useState([]);
-  useEffect(() => {
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, `projects/`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        setProjects(snapshot.val())
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
-  }, []); 
-  
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <ScrollToTop>
         <Headermain />
-        <AppRoutes projects={projects} />
+        <AppRoutes />
       </ScrollToTop>
     </Router>
   );

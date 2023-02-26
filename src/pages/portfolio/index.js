@@ -7,31 +7,31 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { meta } from "../../content_option";
 import { RingLoader } from 'react-spinners';
-import { Link } from 'react-router-dom';
 import Lightbox, { ImagesListType } from 'react-spring-lightbox';
+import { useNavigate } from 'react-router-dom';
+import { getDatabase, ref, child, get } from "firebase/database";
 
-const images: ImagesListType = [
-  {
-    src: 'https://timellenberger.com/static/blog-content/dark-mode/win10-dark-mode.jpg',
-    loading: 'lazy',
-    alt: 'Windows 10 Dark Mode Setting',
-  },
-  {
-    src: 'https://timellenberger.com/static/blog-content/dark-mode/macos-dark-mode.png',
-    loading: 'lazy',
-    alt: 'macOS Mojave Dark Mode Setting',
-  },
-  {
-    src: 'https://timellenberger.com/static/blog-content/dark-mode/android-9-dark-mode.jpg',
-    loading: 'lazy',
-    alt: 'Android 9.0 Dark Mode Setting',
-  },
-];
 
-export const Portfolio = ({ projects }) => {
+export const Portfolio = () => {
   const [projectItems, setProjectItems] = useState([]);
   const [select, setSelect] = useState("All");
-  const [modalOpen, setModalOpen] = useState(true);
+
+  useEffect(() => {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `projects/`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        setProjectItems(snapshot.val())
+        Promise.all(snapshot.val().map(image => loadImage(image.images.cover)))
+          .then(() => setProjectItems(snapshot.val()))
+          .catch(err => console.log("Failed to load images", err))
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, []); 
+  
 
   const loadImage = image => {
     return new Promise((resolve, reject) => {
@@ -45,30 +45,23 @@ export const Portfolio = ({ projects }) => {
       loadImg.onerror = err => reject(err)
     })
   }
+
+
+  const navigate = useNavigate();
+  const navigateToProject = (title) => {
+        navigate("/projectDetails/"+title)
+  }
   
-  useEffect(() => {
-    Promise.all(projects.map(image => loadImage(image.images.cover)))
-      .then(() => setProjectItems(projects))
-      .catch(err => console.log("Failed to load images", err))
-  }, [projects]);
+  // useEffect(() => {
+  //   Promise.all(projects.map(image => loadImage(image.images.cover)))
+  //     .then(() => setProjectItems(projects))
+  //     .catch(err => console.log("Failed to load images", err))
+  // }, [projects]);
 
 
   function dropdownSelect(item) {
     setSelect(item)
     setProjectItems(item == "All" ? projects : projects.filter(x => x.type == item))
-  }
-
-  const [currentImageIndex, setCurrentIndex] = useState(0);
-
-  const gotoPrevious = () =>
-    currentImageIndex > 0 && setCurrentIndex(currentImageIndex - 1);
-
-  const gotoNext = () =>
-    currentImageIndex + 1 < images.length &&
-    setCurrentIndex(currentImageIndex + 1);
-  
-  const onClose = () => {
-    setModalOpen(false)
   }
 
   return (
@@ -125,54 +118,14 @@ export const Portfolio = ({ projects }) => {
                     <img style={{ aspectRatio: 1.52 }} src={data.images.cover} alt="" />
                     <div className="content">
                       <p>{data.title}</p>
-                      <Link to="/projectDetails">View Project</Link>
+                      <button onClick={() => { navigateToProject(data.title) }} type="button" className="btn btn-outline-light">View Project</button>
                     </div>
                   </div>
                 );
               })}
             </div>
         }
-        <Lightbox
-          isOpen={modalOpen}
-          onPrev={gotoPrevious}
-          onNext={gotoNext}
-          images={images}
-          currentIndex={currentImageIndex}
-        /* Add your own UI */
-        // renderHeader={() => (<CustomHeader />)}
-        // renderFooter={() => (<CustomFooter />)}
-        renderPrevButton={() => (<CustomLeftArrowButton />)}
-        renderNextButton={() => (<CustomRightArrowButton />)}
-        // renderImageOverlay={() => (<ImageOverlayComponent >)}
-
-        /* Add styling */
-        // className="cool-class"
-        // style={{ background: "grey" }}
-
-        /* Handle closing */
-        onClose={onClose}
-
-        /* Use single or double click to zoom */
-        // singleClickToZoom
-
-        /* react-spring config for open/close animation */
-        // pageTransitionConfig={{
-        //   from: { transform: "scale(0.75)", opacity: 0 },
-        //   enter: { transform: "scale(1)", opacity: 1 },
-        //   leave: { transform: "scale(0.75)", opacity: 0 },
-        //   config: { mass: 1, tension: 320, friction: 32 }
-        // }}
-        />
-
       </Container>
     </HelmetProvider>
   );
 };
-
-const CustomLeftArrowButton = () => {
-  return (<Link to="/projectDetails">View Project</Link>)
-}
-
-const CustomRightArrowButton = () => {
-  return (<Link to="/projectDetails">View Project</Link>)
-}
