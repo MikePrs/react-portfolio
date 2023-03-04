@@ -9,10 +9,24 @@ import { meta } from "../../content_option";
 import { RingLoader } from 'react-spinners';
 import { useParams } from "react-router-dom";
 import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
+import Carousel from 'react-bootstrap/Carousel';
+
 
 export const ProjectDetails = () => {
+
+
+  const [currentImageIndex, setCurrentIndex] = useState(0);
+
+  const gotoPrevious = () =>
+    currentImageIndex > 0 && setCurrentIndex(currentImageIndex - 1);
+
+  const gotoNext = () =>
+    currentImageIndex + 1 < images.length &&
+    setCurrentIndex(currentImageIndex + 1);
+
+
   const [ProjectTitle, setProjectTitle] = useState('');
-  const [ImagesList, setImagesList] = useState();
+  const [ImagesList, setImagesList] = useState([]);
 
   let params = useParams()
   const storage = getStorage();
@@ -26,24 +40,24 @@ export const ProjectDetails = () => {
   const loadImages = async (projectTitle) => {
     const listRef = ref(storage, projectTitle + '/');
     let temp = []
-    listAll(listRef).then((res) => {
-      res.prefixes.forEach((folderRef) => { });
+    await listAll(listRef).then((res) => {
       res.items.forEach(async (itemRef) => {
         getDownloadURL(itemRef)
           .then((url) => {
             temp = [...temp, url]
-            console.log(url);
           }).finally(() => {
-             setImagesList(temp)
+            setImagesList(temp); 
             //  setLoading(false)
           })
       });
     })
-    .catch((error) => {
-      console.log(error);
-    }).finally(() => {
-      // setLoading(false)
-    })
+      // .then(() => { setImagesList(temp);  })
+    // .catch((error) => {
+    //   console.log(error);
+    // }).finally(() => {
+    //   setImagesList(temp)
+    //   // setLoading(false)
+    // })
   }
 
   return (
@@ -59,6 +73,28 @@ export const ProjectDetails = () => {
             <h1 className="display-4 mb-4"> {ProjectTitle} </h1>
             <hr className="t_border my-4 ml-0 text-left" />
           </Col>
+        </Row>
+        <Row>
+          <Carousel>
+            {
+              ImagesList.map((data, i) => { 
+                return (
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100"
+                      // style={{maxHeight:'500px' }}
+                      src={data}
+                      alt="First slide"
+                    />
+                    {/* <Carousel.Caption>
+                      <h3>First slide label</h3>
+                      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </Carousel.Caption> */}
+                  </Carousel.Item>
+                )
+              })
+            }
+          </Carousel>
         </Row>
       </Container>
     </HelmetProvider>
