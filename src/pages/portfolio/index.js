@@ -7,22 +7,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { meta } from "../../content_option";
 import { RingLoader } from 'react-spinners';
-import Lightbox, { ImagesListType } from 'react-spring-lightbox';
 import { useNavigate } from 'react-router-dom';
 import { getDatabase, ref, child, get } from "firebase/database";
 
 
 export const Portfolio = () => {
   const [projectItems, setProjectItems] = useState([]);
-  const [select, setSelect] = useState("All");
+  const [allProjects, setAllProjects] = useState([]);
 
+  const [select, setSelect] = useState("All");
   useEffect(() => {
     const dbRef = ref(getDatabase());
     get(child(dbRef, `projects/`)).then((snapshot) => {
       if (snapshot.exists()) {
         setProjectItems(snapshot.val())
+        setAllProjects(snapshot.val())
         Promise.all(snapshot.val().map(image => loadImage(image.images.cover)))
-          .then(() => setProjectItems(snapshot.val()))
+          .then(() => { setProjectItems(snapshot.val());})
           .catch(err => console.log("Failed to load images", err))
       } else {
         console.log("No data available");
@@ -61,7 +62,8 @@ export const Portfolio = () => {
 
   function dropdownSelect(item) {
     setSelect(item)
-    setProjectItems(item == "All" ? projects : projects.filter(x => x.type == item))
+    console.log(allProjects);
+    setProjectItems(item == "All" ? allProjects : allProjects.filter(x => x.type == item))
   }
 
   return (
