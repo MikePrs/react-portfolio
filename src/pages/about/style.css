@@ -11,6 +11,10 @@
     border-color: var(--text-color) !important;
 }
 
+.display-linebreak {
+    white-space: pre-line;
+}
+
 .progress-title {
     font-size: 16px;
     font-weight: 700;

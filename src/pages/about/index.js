@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { Container, Row, Col, Button  } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { dataabout, meta, worktimeline, skills } from "../../content_option";
 import { Link } from "react-router-dom";
 
@@ -38,18 +38,20 @@ export const About = () => {
         </Row>
         <Row className="sec_sp">
           <Col lg="5">
-            <h3 className="color_sec py-4">{dataabout.title}</h3>
+            <h3 className="color_sec py-4 display-linebreak">
+              {dataabout.title}
+            </h3>
           </Col>
           <Col lg="7" className="d-flex align-items-center">
-            <div>
+            <div className="display-linebreak">
               <p>{dataabout.aboutme}</p>
             </div>
           </Col>
+          <div className="col-md-12 text-center">
+            <Button onClick={onButtonClick} variant="outline-secondary">Download my CV</Button>
+          </div>
         </Row>
-        <div className="col-md-12 text-center">
-          <Button onClick={onButtonClick} variant="outline-secondary">Download my CV</Button>
-        </div>
-          <Row className=" sec_sp">
+        <Row className=" sec_sp">
           <Col lg="5">
             <h3 className="color_sec py-4">Work Timline</h3>
           </Col>

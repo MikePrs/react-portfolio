@@ -15,15 +15,15 @@ const introdata = {
 };
 
 const dataabout = {
-    title: "abit about my self",
-    aboutme: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis dolor id ligula semper elementum feugiat pretium nulla. Nunc non commodo dolor. Nunc mollis dignissim facilisis. Morbi ut magna ultricies.",
+    title: "A bit about my self",
+    aboutme: "Welcome to my portfolio! My name is Mike Paraskevopoulos, and I am a talented developer based in Thessaloniki, Greece. With 2 years of experience working with Salesforce, I have honed my skills as a software engineer, but I have also developed a deep passion for iOS mobile development. I am committed to taking my skills to the next level and becoming a professional iOS developer.\n\n I earned my Bachelor's degree in Software Engineering at the Hellenic Mediterranean University of Crete. During my studies and professional career, I gained valuable experience working with a team to develop, design, and version software applications. I have also continued to learn and expand my skill set to stay at the forefront of the industry.\n\nIn my portfolio, you will find a selection of my best work, built using the technologies I am most familiar with.Each project showcases my development as a programmer and my ability to solve complex problems with creativity and high - quality work. I am excited about the impact my work can have on businesses and I am always eager to take on new challenges and projects.\n\nThank you for taking the time to explore my portfolio.I am excited about the possibility of working with you and helping you achieve your goals.",
 };
 
 const worktimeline = [{
     jobtitle: "Student",
     where: "Hellenic Mediterranean University",
     date: "2017 - 2022",
-    link:"https://hmu.gr/en/home/",
+    link: "https://hmu.gr/en/home/",
 },
 {
     jobtitle: "Salesforce Developer",
@@ -32,34 +32,43 @@ const worktimeline = [{
 },
 ];
 
-const skills = [{
-    name: "Javascript",
-    value: 70,
-},
-{
-    name: "React Native",
-    value: 80,
-},
-{
-    name: "Java",
-    value: 60,
-},
-{
-    name: "React",
-    value: 50,
-},
-{
-    name: "Salesforce",
-    value: 60,
-},
-{
-    name: "Salesforce / LWC",
-    value: 70,
-},
-{
-    name: "Swift",
-    value: 30,
-},
+const skills = [
+    {
+        name: "Swift",
+        value: 70,
+    },
+    {
+        name: "Javascript",
+        value: 70,
+    },
+    {
+        name: "React Native",
+        value: 60,
+    },
+    {
+        name: "Firebase",
+        value: 70,
+    },
+    {
+        name: "Salesforce",
+        value: 65,
+    },
+    {
+        name: "Salesforce / LWC JS Framework",
+        value: 70,
+    },
+    {
+        name: "Java",
+        value: 65,
+    },
+    {
+        name: "MySQL",
+        value: 60,
+    },
+    {
+        name: "React JS Framework",
+        value: 50,
+    }
 ];
 
 
