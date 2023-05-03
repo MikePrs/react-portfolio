@@ -49,8 +49,8 @@ export const Portfolio = () => {
 
 
   const navigate = useNavigate();
-  const navigateToProject = (title) => {
-        navigate("/projectDetails/"+title)
+  const navigateToProject = (title,index) => {
+        navigate("/projectDetails/"+title+"_"+index)
   }
   
   // useEffect(() => {
@@ -120,7 +120,7 @@ export const Portfolio = () => {
                     <img style={{ aspectRatio: 1.52 }} src={data.images.cover} alt="" />
                     <div className="content">
                       <p>{data.title}</p>
-                      <button onClick={() => { navigateToProject(data.title) }} type="button" className="btn btn-outline-light">View Project</button>
+                      <button onClick={() => { navigateToProject(data.title,i) }} type="button" className="btn btn-outline-light">View Project</button>
                     </div>
                   </div>
                 );
