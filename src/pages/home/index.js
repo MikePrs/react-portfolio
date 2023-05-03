@@ -17,7 +17,7 @@ export const Home = () => {
         <div className="intro_sec d-block d-lg-flex align-items-center ">
           <div
             className="h_bg-image order-1 order-lg-2 h-100 "
-            style={{ backgroundImage: `url(${introdata.your_img_url})` }}
+            style={{ backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/portofolio-a3382.appspot.com/o/me.png?alt=media&token=3fc074aa-7beb-4698-8e65-302814475596)` }}
           ></div>
           <div className="text order-2 order-lg-1 h-100 d-lg-flex justify-content-center">
             <div className="align-self-center ">
@@ -48,7 +48,7 @@ export const Home = () => {
                   </Link>
                   <Link to="/about">
                     <div id="button_h" className="ac_btn btn">
-                      About me
+                      About
                       <div className="ring one"></div>
                       <div className="ring two"></div>
                       <div className="ring three"></div>
