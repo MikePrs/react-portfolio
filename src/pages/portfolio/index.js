@@ -14,22 +14,31 @@ import { getDatabase, ref, child, get } from "firebase/database";
 export const Portfolio = () => {
   const [projectItems, setProjectItems] = useState([]);
   const [allProjects, setAllProjects] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  const [dropDisable, setDropDisable] = useState(true);
   const [select, setSelect] = useState("All");
+
   useEffect(() => {
     const dbRef = ref(getDatabase());
     get(child(dbRef, `projects/`)).then((snapshot) => {
       if (snapshot.exists()) {
-        setProjectItems(snapshot.val())
+        // setProjectItems(snapshot.val())
         setAllProjects(snapshot.val())
         Promise.all(snapshot.val().map(image => loadImage(image.images.cover)))
-          .then(() => { setProjectItems(snapshot.val());})
+          .then(() => {
+            setProjectItems(snapshot.val());
+            setLoading(false)
+            setDropDisable(false)
+          })
           .catch(err => console.log("Failed to load images", err))
       } else {
         console.log("No data available");
       }
     }).catch((error) => {
       console.error(error);
+    }).finally(() => {
+      // setLoading(false)
+      // setDropDisable(false)
     });
   }, []); 
   
@@ -59,10 +68,9 @@ export const Portfolio = () => {
   //     .catch(err => console.log("Failed to load images", err))
   // }, [projects]);
 
-
-  function dropdownSelect(item) {
+  const dropdownSelect=(item)=>{
+    console.log("run");
     setSelect(item)
-    console.log(allProjects);
     setProjectItems(item == "All" ? allProjects : allProjects.filter(x => x.type == item))
   }
 
@@ -90,12 +98,13 @@ export const Portfolio = () => {
                   id="nav-dropdown-dark-example"
                   title={select}
                   menuVariant="dark"
+                  disabled={dropDisable}
                 >
                   <NavDropdown.Item onClick={() => dropdownSelect("All")} href="#action/3.3">All</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => dropdownSelect("Javascript")} href="#action/3.1">Javascript</NavDropdown.Item>
+                  {/* <NavDropdown.Item onClick={() => dropdownSelect("Javascript")} href="#action/3.1">Javascript</NavDropdown.Item> */}
                   <NavDropdown.Item onClick={() => dropdownSelect("Java")} href="#action/3.2">Java</NavDropdown.Item>
                   <NavDropdown.Item onClick={() => dropdownSelect("React Native")} href="#action/3.3">React Native</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => dropdownSelect("React")} href="#action/3.3">React</NavDropdown.Item>
+                  {/* <NavDropdown.Item onClick={() => dropdownSelect("React")} href="#action/3.3">React</NavDropdown.Item> */}
                   <NavDropdown.Item onClick={() => dropdownSelect("Swift")} href="#action/3.3">Swift</NavDropdown.Item>
                   {/* <NavDropdown.Divider /> */}
                   {/* <NavDropdown.Item href="#action/3.4">
@@ -107,7 +116,7 @@ export const Portfolio = () => {
           </Container>
         </Navbar>
         {
-          projectItems.length == 0
+          loading
             ? 
             <div style={{ marginTop: 100 ,display:'flex' , flex:1, alignItems: "center", justifyContent:"center"}} >
               <RingLoader color={'#00ccb1'} size={100} />
@@ -125,6 +134,7 @@ export const Portfolio = () => {
                   </div>
                 );
               })}
+              <div></div><div></div><div></div><div></div>
             </div>
         }
       </Container>
