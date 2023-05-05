@@ -15,7 +15,6 @@ export const Portfolio = () => {
   const [projectItems, setProjectItems] = useState([]);
   const [allProjects, setAllProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [dropDisable, setDropDisable] = useState(true);
   const [select, setSelect] = useState("All");
 
   useEffect(() => {
@@ -28,7 +27,6 @@ export const Portfolio = () => {
           .then(() => {
             setProjectItems(snapshot.val());
             setLoading(false)
-            setDropDisable(false)
           })
           .catch(err => console.log("Failed to load images", err))
       } else {
@@ -98,7 +96,7 @@ export const Portfolio = () => {
                   id="nav-dropdown-dark-example"
                   title={select}
                   menuVariant="dark"
-                  disabled={dropDisable}
+                  disabled={loading}
                 >
                   <NavDropdown.Item onClick={() => dropdownSelect("All")} href="#action/3.3">All</NavDropdown.Item>
                   {/* <NavDropdown.Item onClick={() => dropdownSelect("Javascript")} href="#action/3.1">Javascript</NavDropdown.Item> */}
