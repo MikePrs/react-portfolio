@@ -10,7 +10,7 @@ const introdata = {
         first: "I love coding",
         second: "I develop ... mobile apps and cool websites"
     },
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at nisl euismod urna bibendum",
+    description: "I’m Mike, a 24 year old software engineer based in Thessaloniki, Greece. I’m focusing on developing IOS application with swift.",
     your_img_url: "https://images.unsplash.com/photo-1514790193030-c89d266d5a9d",
 };
 
@@ -35,7 +35,7 @@ const worktimeline = [{
 const skills = [
     {
         name: "Swift",
-        value: 70,
+        value: 65,
     },
     {
         name: "Javascript",
@@ -43,7 +43,7 @@ const skills = [
     },
     {
         name: "React Native",
-        value: 60,
+        value: 65,
     },
     {
         name: "Firebase",
@@ -51,7 +51,7 @@ const skills = [
     },
     {
         name: "Salesforce",
-        value: 65,
+        value: 60,
     },
     {
         name: "Salesforce / LWC JS Framework",

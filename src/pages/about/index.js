@@ -9,12 +9,12 @@ export const About = () => {
 
 
   const onButtonClick = () => {
-    fetch('myCv.pdf').then(response => {
+    fetch('MichailParaskevopoulos.pdf').then(response => {
       response.blob().then(blob => {
         const fileURL = window.URL.createObjectURL(blob);
         let alink = document.createElement('a');
         alink.href = fileURL;
-        alink.download = 'myCv.pdf';
+        alink.download = 'MikeParaskevopoulos.pdf';
         alink.click();
       })
     })
