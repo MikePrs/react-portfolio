@@ -125,7 +125,7 @@ export const Portfolio = () => {
             </div>
             :
             <div className="mb-5 po_items_ho">
-              {projectItems.map((data, i) => {
+              {projectItems.reverse().map((data, i) => {
                 return (
                   <div key={i} className="po_item">
                     <img style={{ aspectRatio: 1.52 }} src={data.images.cover} alt="" />
