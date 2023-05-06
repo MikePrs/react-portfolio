@@ -71,7 +71,6 @@ export const Portfolio = () => {
   // }, [projects]);
 
   const dropdownSelect=(item)=>{
-    console.log("run");
     setSelect(item)
     setProjectItems(item == "All" ? allProjects : allProjects.filter(x => x.type == item))
   }

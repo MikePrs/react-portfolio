@@ -7,6 +7,10 @@
     border: 1px solid var(--secondary-color);
 }
 
+.display-linebreak {
+    white-space: pre-line;
+}
+
 .contact__form input.form-control {
     margin-bottom: 2em;
     height: calc(2.5em + .75rem + 2px);
