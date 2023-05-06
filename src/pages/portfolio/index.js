@@ -18,6 +18,10 @@ export const Portfolio = () => {
   const [select, setSelect] = useState("All");
 
   useEffect(() => {
+    getData()
+  }, []);
+
+  const getData = () => {
     const dbRef = ref(getDatabase());
     get(child(dbRef, `projects/`)).then((snapshot) => {
       if (snapshot.exists()) {
@@ -38,7 +42,7 @@ export const Portfolio = () => {
       // setLoading(false)
       // setDropDisable(false)
     });
-  }, []); 
+  }
   
 
   const loadImage = image => {
@@ -98,12 +102,12 @@ export const Portfolio = () => {
                   menuVariant="dark"
                   disabled={loading}
                 >
-                  <NavDropdown.Item onClick={() => dropdownSelect("All")} href="#action/3.3">All</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => dropdownSelect("All")} >All</NavDropdown.Item>
                   {/* <NavDropdown.Item onClick={() => dropdownSelect("Javascript")} href="#action/3.1">Javascript</NavDropdown.Item> */}
-                  <NavDropdown.Item onClick={() => dropdownSelect("Java")} href="#action/3.2">Java</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => dropdownSelect("React Native")} href="#action/3.3">React Native</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => dropdownSelect("Java")} >Java</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => dropdownSelect("React Native")} >React Native</NavDropdown.Item>
                   {/* <NavDropdown.Item onClick={() => dropdownSelect("React")} href="#action/3.3">React</NavDropdown.Item> */}
-                  <NavDropdown.Item onClick={() => dropdownSelect("Swift")} href="#action/3.3">Swift</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => dropdownSelect("Swift")} >Swift</NavDropdown.Item>
                   {/* <NavDropdown.Divider /> */}
                   {/* <NavDropdown.Item href="#action/3.4">
                       Separated link
