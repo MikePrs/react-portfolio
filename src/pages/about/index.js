@@ -9,7 +9,7 @@ export const About = () => {
 
 
   const onButtonClick = () => {
-    fetch('MichailParaskevopoulos.pdf').then(response => {
+    fetch('my-cv.pdf').then(response => {
       response.blob().then(blob => {
         const fileURL = window.URL.createObjectURL(blob);
         let alink = document.createElement('a');
