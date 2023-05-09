@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Typewriter from "typewriter-effect";
 import { introdata, meta } from "../../content_option";
 import { Link } from "react-router-dom";
+import { ClipLoader } from 'react-spinners';
+import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 
 export const Home = () => {
+  const [Loading, setLoading] = useState(true);
+  const [Image, setImage] = useState('');
+  const storage = getStorage();
+  useEffect(() => {
+    getProfileImage()
+  }, []);
+
+  const getProfileImage = async () => {
+    await getDownloadURL(ref(storage, 'me.png'))
+      .then((url) => { 
+        console.log(url);
+        setImage(url)
+      }).finally(() => {
+            setLoading(false)
+      })
+  }
   return (
     <HelmetProvider>
       <section id="home" className="home">
@@ -15,10 +33,19 @@ export const Home = () => {
           <meta name="description" content={meta.description} />
         </Helmet>
         <div className="intro_sec d-block d-lg-flex align-items-center ">
-          <div
-            className="h_bg-image order-1 order-lg-2 h-100 "
-            style={{ backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/portofolio-a3382.appspot.com/o/me.png?alt=media&token=3fc074aa-7beb-4698-8e65-302814475596)` }}
-          ></div>
+          {Loading
+            ?
+            <div
+              className="h_bg-image order-1 order-lg-2 h-100" style={{ flexWrap: 'wrap', display: 'flex',justifyContent: 'center',alignContent: 'center'}}>
+              <ClipLoader color={'#00ccb1'} size={100} />
+            </div>
+            :
+            <div
+              className="h_bg-image order-1 order-lg-2 h-100 "
+              style={{ backgroundImage: `url(${Image})` }}
+            ></div>
+          }
+          
           <div className="text order-2 order-lg-1 h-100 d-lg-flex justify-content-center">
             <div className="align-self-center ">
               <div className="intro mx-auto">
