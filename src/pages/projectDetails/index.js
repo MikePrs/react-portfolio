@@ -59,13 +59,6 @@ export const ProjectDetails = () => {
           })
       });
     })
-      // .then(() => { setImagesList(temp);  })
-    // .catch((error) => {
-    //   console.log(error);
-    // }).finally(() => {
-    //   setImagesList(temp)
-    //   // setLoading(false)
-    // })
   }
 
   return (

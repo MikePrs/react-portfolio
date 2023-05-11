@@ -64,11 +64,6 @@ export const Portfolio = () => {
         navigate("/projectDetails/"+title+"_"+index)
   }
   
-  // useEffect(() => {
-  //   Promise.all(projects.map(image => loadImage(image.images.cover)))
-  //     .then(() => setProjectItems(projects))
-  //     .catch(err => console.log("Failed to load images", err))
-  // }, [projects]);
 
   const dropdownSelect=(item)=>{
     setSelect(item)

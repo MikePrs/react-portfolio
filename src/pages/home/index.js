@@ -21,7 +21,7 @@ export const Home = () => {
         console.log(url);
         setImage(url)
       }).finally(() => {
-            setLoading(false)
+        setLoading(false)
       })
   }
   return (
