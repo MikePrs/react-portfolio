@@ -32,6 +32,47 @@ const worktimeline = [{
 },
 ];
 
+const databaseSkills = [
+    {
+        name: "Firebase",
+        value: 80,
+    },
+    {
+        name: "Realm",
+        value: 70,
+    },
+    {
+        name: "SQl",
+        value: 65,
+    },
+]
+
+const versionControlSkills = [
+    {
+        name: "GitHub",
+        value: 70,
+    },
+    {
+        name: "Bitbucket",
+        value: 80,
+    }
+]
+
+const projectTrackingSkills = [
+    {
+        name: "Jira",
+        value: 80,
+    },
+    {
+        name: "Azure",
+        value: 70,
+    },
+    {
+        name: "Asana",
+        value: 50,
+    }
+]
+
 const skills = [
     {
         name: "Swift",
@@ -46,8 +87,8 @@ const skills = [
         value: 65,
     },
     {
-        name: "Firebase",
-        value: 70,
+        name: "React JS Framework",
+        value: 50,
     },
     {
         name: "Salesforce",
@@ -58,16 +99,16 @@ const skills = [
         value: 70,
     },
     {
-        name: "Java",
-        value: 65,
-    },
-    {
-        name: "MySQL",
+        name: "Salesforce / Apex",
         value: 60,
     },
     {
-        name: "React JS Framework",
-        value: 50,
+        name: "Java",
+        value: 60,
+    },
+    {
+        name: "C",
+        value: 60,
     }
 ];
 
@@ -144,4 +185,7 @@ export {
     contactConfig,
     socialprofils,
     logotext,
+    databaseSkills,
+    versionControlSkills,
+    projectTrackingSkills
 };
