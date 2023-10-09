@@ -119,7 +119,7 @@ export const About = () => {
               );
             })}
             <h4 style={{ paddingBlock: 30 }}>Version Control</h4>
-            {databaseSkills.map((data, i) => {
+            {versionControlSkills.map((data, i) => {
               return (
                 <div key={i}>
                   <h3 className="progress-title">{data.name}</h3>
